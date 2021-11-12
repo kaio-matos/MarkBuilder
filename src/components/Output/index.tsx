@@ -1,5 +1,6 @@
 import Markdown from "markdown-to-jsx";
 import "./style.css";
+import "./markdown.css";
 
 type OutputPropsType = {
   text: string;
