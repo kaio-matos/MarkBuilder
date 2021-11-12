@@ -7,7 +7,6 @@ type OutputPropsType = {
 };
 
 export default function Output({ text }: OutputPropsType) {
-  console.log(text);
   return (
     <div className="output_container">
       <Markdown>{text}</Markdown>
