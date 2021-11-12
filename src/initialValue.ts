@@ -63,6 +63,7 @@ You may be using [MarkBuilder](https://kaio-matos.github.io/MarkBuilder/).
 alert(message);` +
   "```" +
   `
-## Inline code
-` +
+
+  ## Inline code
+  ` +
   "This web site is using `markdown-to-jsx` and was inspired by [Markdown Live Preview](https://markdownlivepreview.com).";
