@@ -1,3 +1,15 @@
-export default function Output() {
-  return <div></div>;
+import Markdown from "markdown-to-jsx";
+import "./style.css";
+
+type OutputPropsType = {
+  text: string;
+};
+
+export default function Output({ text }: OutputPropsType) {
+  console.log(text);
+  return (
+    <div className="output_container">
+      <Markdown>{text}</Markdown>
+    </div>
+  );
 }

@@ -12,7 +12,7 @@ function App() {
       <Header />
       <div className="container">
         <Input setText={setText} />
-        <Output />
+        <Output text={text} />
       </div>
     </div>
   );
