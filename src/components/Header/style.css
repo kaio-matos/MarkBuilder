@@ -1,0 +1,10 @@
+header {
+  display: grid;
+  align-items: center;
+  text-align: center;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: rgb(32, 32, 32);
+  color: var(--neutral-color);
+
+  padding: 0.7rem 0;
+}
