@@ -1,12 +1,13 @@
 .App {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   height: 100vh;
-  max-height: 100%;
+  max-height: 100vh;
+  grid-template: min-content auto / auto;
 }
 
 .container {
-  display: flex;
+  display: grid;
   height: 100%;
-  width: 100%;
+  grid-template: 100% / repeat(2, 50%);
+  overflow-y: hidden;
 }
