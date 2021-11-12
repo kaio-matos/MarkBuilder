@@ -6,10 +6,11 @@ import Output from "./components/Output";
 
 function App() {
   const [text, setText] = useState("");
+  const [activeDark, setActiveDark] = useState(true);
 
   return (
-    <div className="App">
-      <Header />
+    <div className={`App ${activeDark ? "dark_mode" : ""}`}>
+      <Header darkState={activeDark} setDarkState={setActiveDark} />
       <div className="container">
         <Input setText={setText} />
         <Output text={text} />

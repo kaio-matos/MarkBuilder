@@ -5,9 +5,18 @@
   grid-template: min-content auto / auto;
 }
 
+.App * {
+  transition: 500ms;
+}
+
 .container {
   display: grid;
   height: 100%;
   grid-template: 100% / repeat(2, 50%);
   overflow-y: hidden;
+}
+
+.dark_mode .container {
+  background-color: var(--dark-color);
+  color: var(--neutral-color);
 }

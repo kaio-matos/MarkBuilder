@@ -1,4 +1,12 @@
+.dark_mode .output_container * {
+  --table-border-color: #ffffff67;
+  --table-bg-2n-color: #757575;
+  color: var(--neutral-color);
+}
+
 .output_container > * {
+  --table-border-color: #00000018;
+  --table-bg-2n-color: #00000007;
   color: #444444;
   font-family: var(--text-font);
 }
@@ -48,7 +56,7 @@
 .output_container table,
 .output_container th,
 .output_container td {
-  border: 1px solid #00000018;
+  border: 1px solid var(--table-border-color);
   border-collapse: collapse;
 }
 
@@ -58,5 +66,13 @@
 }
 
 .output_container tr:nth-child(2n) {
-  background-color: #00000007;
+  background-color: var(--table-bg-2n-color);
+}
+
+.output_container a {
+  color: #008cff !important;
+}
+
+.output_container a:hover {
+  color: #59b4ff !important;
 }

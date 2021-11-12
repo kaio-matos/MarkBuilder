@@ -10,3 +10,8 @@
   border: none;
   resize: none;
 }
+
+.dark_mode .input_container textarea {
+  background-color: var(--dark-color);
+  color: var(--neutral-color);
+}
