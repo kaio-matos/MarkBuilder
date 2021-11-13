@@ -11,19 +11,19 @@ function getLineStart(text: string, selectionStart: number) {
   for (let j = lineStart; j !== -1; j--) {
     if (text[j] === "\n") {
       lineStart = j + 1;
-      continue;
+      break;
     }
   }
 
   return lineStart;
 }
 
-function addTabStringEnter(text: string, start: number, end: number) {
-  const line = text.substring(start, end);
-  const tabbedText = "\t" + line + "\n";
+// function addTabStringEnter(text: string, start: number, end: number) {
+//   const line = text.substring(start, end);
+//   const tabbedText = "\t" + line + "\n";
 
-  return tabbedText;
-}
+//   return tabbedText;
+// }
 
 function selectionTab(e: React.KeyboardEvent<HTMLTextAreaElement>) {
   const target = e.currentTarget;
@@ -36,33 +36,35 @@ function selectionTab(e: React.KeyboardEvent<HTMLTextAreaElement>) {
   let lineStart = getLineStart(allRawText, selectionStart);
 
   // Get lines from first character of the line to last selected character
-  const selectedLines = allRawText.substring(lineStart, selectionEnd);
+  const linesText = allRawText.substring(lineStart, selectionEnd);
 
-  let tabbedText = "";
   let lastEnter = 0;
 
-  // Search for lines ends -> for each line -> tab + line + enter -> add all to tabbedText
-  for (let i = 0; i < selectedLines.length; i++) {
-    const isLastCharacter = i === selectedLines.length - 1;
-    const isEndOfLine = selectedLines[i] === "\n";
+  const lines = [];
+
+  // Create array of lines
+  for (let i = 0; i < linesText.length; i++) {
+    const isLastCharacter = i === linesText.length - 1;
+    const isEndOfLine = linesText[i] === "\n";
     const isFirstTime = lastEnter === 0;
 
-    if (isEndOfLine) {
+    if (isEndOfLine || isLastCharacter) {
       if (isFirstTime) {
-        tabbedText = addTabStringEnter(selectedLines, lastEnter, i);
+        lines.push(linesText.substring(lastEnter, i + 1));
+        lastEnter = i;
       } else {
-        tabbedText =
-          tabbedText + addTabStringEnter(selectedLines, lastEnter + 1, i);
+        lines.push(linesText.substring(lastEnter + 1, i + 1));
+        lastEnter = i;
       }
-      lastEnter = i;
-    }
-
-    if (isLastCharacter) {
-      const line = selectedLines.substring(lastEnter + 1, i + 1);
-      tabbedText = tabbedText + "\t" + line;
     }
   }
 
+  let tabbedText = "";
+  lines.forEach((text) => {
+    tabbedText = tabbedText + "\t" + text;
+  });
+
+  console.log(lines);
   return { tabbedText, lineStart };
 }
 
