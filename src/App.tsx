@@ -10,8 +10,15 @@ function App() {
   const [activeDark, setActiveDark] = useState(true);
 
   useEffect(() => {
-    setText(initialValue);
+    const storagedText = localStorage.getItem("text");
+
+    if (storagedText) setText(storagedText);
+    else setText(initialValue);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("text", text);
+  }, [text]);
 
   return (
     <div className={`App ${activeDark ? "dark_mode" : ""}`}>
