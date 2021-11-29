@@ -1,5 +1,3 @@
-import { Node } from "typescript";
-
 export function TabSelectedText(
   selectionStart: number,
   selectionEnd: number,
